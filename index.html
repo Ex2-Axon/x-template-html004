@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunaria: มหานครแห่งกรกฎ (The City of Cancer)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts (Sarabun & Mitr) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden min-h-screen flex flex-col">
+
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" id="starfield"></div>
+    <div data-include="components/header.html"></div>
+
+    <main class="flex-grow relative z-10">
+        
+        <!-- Hero Section: Welcome to Lunaria -->
+        <section id="welcome" class="relative min-h-[90vh] flex items-center justify-center px-4 overflow-hidden border-b border-slate-900">
+            <div id="hero-moon" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full bg-sky-900/10 border border-sky-300/10 moon-glow pointer-events-none transition-all duration-1000 ease-in-out"></div>
+            
+            <div class="max-w-4xl mx-auto text-center relative z-10 py-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-950/60 border border-sky-400/30 text-sky-300 text-xs sm:text-sm mb-6 animate-pulse">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    <span>ยินดีต้อนรับสู่ดินแดนแห่งความเข้าอกเข้าใจและอบอุ่น</span>
+                </div>
+                <h1 class="font-title text-4xl sm:text-6xl font-bold tracking-tight bg-gradient-to-r from-sky-200 via-blue-100 to-indigo-200 bg-clip-text text-transparent mb-4 leading-tight">
+                    ลูนาเรีย: มหานครแห่งกรกฎ
+                </h1>
+                <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                    มหานครลอยน้ำที่ถูกโอบล้อมด้วยปราการหินอันแข็งแกร่งประดุจเปลือกปู แต่ภายในซ่อนไว้ด้วยกระแสน้ำที่อบอุ่น อารมณ์ที่ลึกซึ้ง และหอคอยความทรงจำที่ไม่มีวันเลือนหาย
+                </p>
+                
+                <!-- Quick Zodiac Facts Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-10 text-left">
+                    <div class="bg-slate-900/60 backdrop-blur border border-slate-800/80 p-4 rounded-xl">
+                        <span class="text-xs text-sky-400 uppercase tracking-wider block mb-1">ดาวเคราะห์ปกครอง</span>
+                        <span class="font-title text-lg text-slate-100 flex items-center gap-1.5">
+                            <i data-lucide="moon" class="w-5 h-5 text-sky-300"></i> ดวงจันทร์
+                        </span>
+                    </div>
+                    <div class="bg-slate-900/60 backdrop-blur border border-slate-800/80 p-4 rounded-xl">
+                        <span class="text-xs text-sky-400 uppercase tracking-wider block mb-1">สัญลักษณ์ประจำราศี</span>
+                        <span class="font-title text-lg text-slate-100 flex items-center gap-1.5">
+                            ♋ ปู (Crab)
+                        </span>
+                    </div>
+                    <div class="bg-slate-900/60 backdrop-blur border border-slate-800/80 p-4 rounded-xl">
+                        <span class="text-xs text-sky-400 uppercase tracking-wider block mb-1">ธาตุประจำเมือง</span>
+                        <span class="font-title text-lg text-slate-100 flex items-center gap-1.5">
+                            <i data-lucide="droplet" class="w-5 h-5 text-blue-400"></i> ธาตุน้ำ
+                        </span>
+                    </div>
+                    <div class="bg-slate-900/60 backdrop-blur border border-slate-800/80 p-4 rounded-xl">
+                        <span class="text-xs text-sky-400 uppercase tracking-wider block mb-1">ช่วงเวลาของราศี</span>
+                        <span class="font-title text-lg text-slate-100">
+                            21 มิ.ย. - 22 ก.ค.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#city-map" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-medium px-6 py-3.5 rounded-xl transition duration-150 transform hover:-translate-y-0.5">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        <span>เริ่มการเดินทางเข้าชมเมือง</span>
+                    </a>
+                    <a href="#mood-control" class="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 px-6 py-3.5 rounded-xl transition duration-150">
+                        <i data-lucide="moon-star" class="w-5 h-5"></i>
+                        <span>ปรับเฟสพระจันทร์เพื่อจำลองเมือง</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="absolute bottom-0 left-0 right-0 h-16 overflow-hidden pointer-events-none z-10">
+                <svg class="absolute bottom-0 w-[200%] h-full water-wave opacity-10 fill-sky-400" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,60 C150,90 350,30 500,60 C650,90 850,30 1000,60 C1150,90 1350,30 1500,60 C1650,90 1850,30 2000,60 L2000,120 L0,120 Z"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Interactive Section: City Map & Landmarks -->
+        <section id="city-map" class="py-20 px-4 max-w-7xl mx-auto border-b border-slate-900">
+            <div class="text-center mb-12">
+                <h2 class="font-title text-3xl sm:text-4xl font-bold text-sky-200 mb-4">สถาปัตยกรรมแลนด์มาร์กแห่งลูนาเรีย</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    คลิกเลือกสถานที่ต่างๆ บนแผนที่ผังเมืองจำลอง เพื่อสำรวจว่าสถาปัตยกรรมแต่ละส่วนสะท้อนลักษณะนิสัยอันโดดเด่นของชาวราศีกรกฎอย่างไรบ้าง
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <div class="lg:col-span-7 bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 flex flex-col justify-between min-h-[450px] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/10 via-transparent to-sky-950/10 pointer-events-none"></div>
+                    <span class="text-xs text-sky-400 font-medium tracking-wider uppercase mb-4 block relative z-10 flex items-center gap-1.5">
+                        <i data-lucide="navigation" class="w-4 h-4"></i> Interactive City Grid
+                    </span>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-auto relative z-10">
+                        <button onclick="selectLandmark('defensive')" id="btn-defensive" class="landmark-btn p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-900 text-left transition duration-300 flex flex-col justify-between h-40">
+                            <div class="flex items-center justify-between w-full">
+                                <span class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-bold" id="badge-defensive">1</span>
+                                <i data-lucide="shield" class="w-5 h-5 text-sky-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-title font-medium text-slate-200 text-sm sm:text-base">ป้อมปราการเปลือกปู</h3>
+                                <p class="text-xs text-slate-400">ด่านหน้ารอบเมืองที่แข็งแกร่ง</p>
+                            </div>
+                        </button>
+                        <button onclick="selectLandmark('family')" id="btn-family" class="landmark-btn p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-900 text-left transition duration-300 flex flex-col justify-between h-40">
+                            <div class="flex items-center justify-between w-full">
+                                <span class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-bold" id="badge-family">2</span>
+                                <i data-lucide="home" class="w-5 h-5 text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-title font-medium text-slate-200 text-sm sm:text-base">มหาวิหารแห่งบ้าน</h3>
+                                <p class="text-xs text-slate-400">ใจกลางอันแสนอบอุ่นและปลอดภัย</p>
+                            </div>
+                        </button>
+                        <button onclick="selectLandmark('sensitive')" id="btn-sensitive" class="landmark-btn p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-900 text-left transition duration-300 flex flex-col justify-between h-40">
+                            <div class="flex items-center justify-between w-full">
+                                <span class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-bold" id="badge-sensitive">3</span>
+                                <i data-lucide="waves" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-title font-medium text-slate-200 text-sm sm:text-base">ทะเลสาบจันทรา</h3>
+                                <p class="text-xs text-slate-400">ผืนน้ำแปรปรวนตามกระแสอารมณ์</p>
+                            </div>
+                        </button>
+                        <button onclick="selectLandmark('nostalgic')" id="btn-nostalgic" class="landmark-btn p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-900 text-left transition duration-300 flex flex-col justify-between h-40">
+                            <div class="flex items-center justify-between w-full">
+                                <span class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-bold" id="badge-nostalgic">4</span>
+                                <i data-lucide="archive" class="w-5 h-5 text-amber-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-title font-medium text-slate-200 text-sm sm:text-base">หอจดหมายเหตุอดีต</h3>
+                                <p class="text-xs text-slate-400">คลังเก็บความทรงจำและอดีต</p>
+                            </div>
+                        </button>
+                        <button onclick="selectLandmark('loyal')" id="btn-loyal" class="landmark-btn p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-900 text-left transition duration-300 flex flex-col justify-between h-40">
+                            <div class="flex items-center justify-between w-full">
+                                <span class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-bold" id="badge-loyal">5</span>
+                                <i data-lucide="heart-handshake" class="w-5 h-5 text-rose-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-title font-medium text-slate-200 text-sm sm:text-base">ย่านสะพานสายใยซื่อสัตย์</h3>
+                                <p class="text-xs text-slate-400">ความมั่นคงที่ไม่มีวันสั่นคลอน</p>
+                            </div>
+                        </button>
+                        <button onclick="selectLandmark('imaginative')" id="btn-imaginative" class="landmark-btn p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-900 text-left transition duration-300 flex flex-col justify-between h-40">
+                            <div class="flex items-center justify-between w-full">
+                                <span class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-bold" id="badge-imaginative">6</span>
+                                <i data-lucide="palette" class="w-5 h-5 text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-title font-medium text-slate-200 text-sm sm:text-base">สวนลอยแห่งจินตนาการ</h3>
+                                <p class="text-xs text-slate-400">จุดประกายศิลปะและความคิดฝัน</p>
+                            </div>
+                        </button>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4 text-center">สัญลักษณ์ "♋" ของเมืองถูกถักทอในโครงสร้างวิศวกรรมผังเมืองทั้งหมด</p>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col justify-between bg-slate-900/60 border border-slate-800/80 rounded-3xl p-6 relative">
+                    <div id="landmark-details" class="transition-opacity duration-300">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div id="landmark-icon-bg" class="w-12 h-12 rounded-2xl flex items-center justify-center text-sky-400">
+                                <i id="landmark-icon" data-lucide="map" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-sky-400 tracking-wider block uppercase font-medium">รายละเอียดสถานที่</span>
+                                <h3 id="landmark-title" class="font-title text-2xl font-bold text-slate-100">คลิกเลือกเพื่อเข้าชมเมือง</h3>
+                            </div>
+                        </div>
+                        <div class="w-full h-48 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-center justify-center mb-6 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-slate-950/60 flex items-center justify-center p-4">
+                                <p id="landmark-visual" class="text-sm text-slate-400 text-center italic"></p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-xs text-sky-400 font-semibold tracking-wider uppercase mb-1">ลักษณะที่สอดคล้อง</h4>
+                                <p id="landmark-zodiac-trait" class="text-sm font-medium text-slate-200">-</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-sky-400 font-semibold tracking-wider uppercase mb-1">บทวิเคราะห์โครงสร้างเมือง</h4>
+                                <p id="landmark-desc" class="text-sm text-slate-400 leading-relaxed">
+                                    ชาวเมืองลูนาเรียขึ้นชื่อเรื่องความละเอียดอ่อนและการถนอมใจดั่งสิ่งล้ำค่า สถาปัตยกรรมเหล่านี้ออกแบบขึ้นเพื่อให้สอดรับกับวิถีชีวิตดั้งเดิมอันเปี่ยมสุข
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-800/80">
+                        <div class="bg-sky-950/30 border border-sky-400/15 rounded-xl p-4 flex gap-3">
+                            <i data-lucide="info" class="w-5 h-5 text-sky-400 flex-shrink-0 mt-0.5"></i>
+                            <div class="text-xs text-slate-300 leading-relaxed">
+                                <strong class="text-sky-300 block mb-1">ความลับของกรกฎ:</strong> 
+                                แม้กำแพงป้อมปราการชั้นนอกจะดูหนาและเจาะผ่านยากเพียงใด แต่ภายในเขตราษฎรได้รับการดูแลและต้อนรับอย่างแสนวิเศษที่สุดเสมอ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mood-control" class="py-20 px-4 bg-slate-900/20 border-b border-slate-900 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-title text-3xl sm:text-4xl font-bold text-sky-200 mb-4">หอเครื่องมือพยากรณ์อารมณ์แห่งเมือง</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto">
+                        เมืองลูนาเรียปกครองโดย "ดวงจันทร์" ทำให้ผู้คนและกระแสน้ำมีอารมณ์ที่ลึกซึ้งและแปรปรวนง่ายตามความสว่าง ลองปรับเปลี่ยนวิถีเฟสข้างขึ้นข้างแรมของดวงจันทร์ เพื่อจำลองความรู้สึกและพยากรณ์สภาพจิตใจของชาวเมือง
+                    </p>
+                </div>
+                <div class="max-w-4xl mx-auto bg-slate-900/60 border border-slate-800/80 rounded-3xl p-6 sm:p-8">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                        <button onclick="setMoonPhase('new')" id="btn-phase-new" class="moon-phase-btn p-4 rounded-2xl bg-slate-950 border border-sky-500/30 text-center transition duration-300">
+                            <span class="text-3xl block mb-2">🌑</span>
+                            <span class="font-title text-sm text-slate-100 block">จันทร์ดับ (New Moon)</span>
+                            <span class="text-[10px] text-slate-500">คืนแห่งการเก็บตัวระแวง</span>
+                        </button>
+                        <button onclick="setMoonPhase('waxing')" id="btn-phase-waxing" class="moon-phase-btn p-4 rounded-2xl bg-slate-950 border border-slate-800 text-center transition duration-300">
+                            <span class="text-3xl block mb-2">🌙</span>
+                            <span class="font-title text-sm text-slate-100 block">จันทร์เสี้ยว (Waxing)</span>
+                            <span class="text-[10px] text-slate-500">ช่วงเวลาเริ่มระมัดระวัง</span>
+                        </button>
+                        <button onclick="setMoonPhase('full')" id="btn-phase-full" class="moon-phase-btn p-4 rounded-2xl bg-slate-950 border border-slate-800 text-center transition duration-300">
+                            <span class="text-3xl block mb-2">🌕</span>
+                            <span class="font-title text-sm text-slate-100 block">จันทร์เพ็ญ (Full Moon)</span>
+                            <span class="text-[10px] text-slate-500">กระแสความอ่อนไหวสูงสุด</span>
+                        </button>
+                        <button onclick="setMoonPhase('waning')" id="btn-phase-waning" class="moon-phase-btn p-4 rounded-2xl bg-slate-950 border border-slate-800 text-center transition duration-300">
+                            <span class="text-3xl block mb-2">🌗</span>
+                            <span class="font-title text-sm text-slate-100 block">จันทร์แรม (Waning)</span>
+                            <span class="text-[10px] text-slate-500">จินตนาการและความอบอุ่น</span>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center border-t border-slate-800/80 pt-8">
+                        <div class="md:col-span-4 flex justify-center">
+                            <div class="relative w-40 h-40 rounded-full flex items-center justify-center bg-slate-950 border border-slate-800">
+                                <div id="moon-simulation" class="w-28 h-28 rounded-full bg-gradient-to-r from-sky-200 to-indigo-100 moon-glow transition-all duration-700"></div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-8 space-y-4">
+                            <div>
+                                <span class="bg-indigo-500/10 text-indigo-400 border border-indigo-400/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider" id="mood-badge">
+                                    อารมณ์เมืองแปรปรวนง่าย (Sensitive)
+                                </span>
+                                <h3 class="font-title text-2xl font-bold mt-2" id="mood-title">เมื่อจันทร์เพ็ญทอประกาย... อารมณ์พรั่งพรู</h3>
+                            </div>
+                            <p class="text-sm text-slate-400 leading-relaxed" id="mood-description">
+                                ในคืนเพ็ญเต็มดวง พลังงานจากดวงจันทร์จะแผ่ซ่านสูงที่สุด ผู้อาศัยในเมืองจะมีอารมณ์ความละเอียดอ่อน เห็นอกเห็นใจผู้อื่นสูงลิ่ว มีสัญชาตญาณอันเฉียบแหลมยิ่งยวด แต่อาจจะมีอาการแปรปรวนง่าย ขี้ใจน้อยแสนงอน และมีความระคนหวาดระแวงปนกันไปตามกระแสน้ำขึ้น
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 pt-2">
+                                <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                                    <span class="text-xs text-slate-500 block">พลังงานความอ่อนไหว</span>
+                                    <span class="text-base font-semibold text-sky-400 font-title" id="stat-sensitive">95%</span>
+                                </div>
+                                <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                                    <span class="text-xs text-slate-500 block">เกราะกั้นภายนอก</span>
+                                    <span class="text-base font-semibold text-rose-400 font-title" id="stat-defense">15%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nostalgia" class="py-20 px-4 max-w-7xl mx-auto border-b border-slate-900">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-400/20 text-xs font-medium">
+                        <i data-lucide="hourglass" class="w-3.5 h-3.5"></i>
+                        <span>Nostalgic: คนที่ผูกพันกับความทรงจำอดีต</span>
+                    </div>
+                    <h2 class="font-title text-3xl sm:text-4xl font-bold text-slate-100">
+                        หอเก็บความทรงจำของชาวเมือง (The Nostalgia Vault)
+                    </h2>
+                    <p class="text-slate-400 leading-relaxed">
+                        หนึ่งในจุดเด่นที่น่าอัศจรรย์ใจที่สุดของคนราศีกรกฎ คือการจดจำเรื่องราวในอดีตได้อย่างแม่นยำ ลึกซึ้ง และมักเก็บสะสมสิ่งของที่มีคุณค่าทางจิตใจ 
+                    </p>
+                    <p class="text-slate-400 leading-relaxed">
+                        ที่นี่คือคลังเก็บจดหมายเก่า ภาพประทับใจ หรือเศษชิ้นส่วนอารมณ์จากอดีตของเมืองลูนาเรีย คุณสามารถเขียนจดหมายฝากความทรงจำไว้ในกำแพงหินแห่งอดีตนี้ เพื่อระลึกถึงความสุขเก่าๆ
+                    </p>
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-slate-300">เป็นจุดสะสมของโบราณที่มีเรื่องราว</span>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-slate-300">เครื่องบันทึกห้วงความรู้สึกครั้งแรกของชีวิต</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 relative">
+                    <div class="absolute top-4 right-4 text-amber-400/20 pointer-events-none">
+                        <i data-lucide="archive" class="w-20 h-20"></i>
+                    </div>
+                    <h3 class="font-title text-xl font-bold text-slate-100 mb-4 flex items-center gap-2">
+                        <i data-lucide="pen-tool" class="w-5 h-5 text-amber-400"></i>
+                        <span>จารึกความทรงจำของคุณไว้กับลูนาเรีย</span>
+                    </h3>
+                    <form id="memory-form" onsubmit="addMemory(event)" class="space-y-4 mb-6">
+                        <div>
+                            <label for="author" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">ผู้เดินทางผ่านกาลเวลา</label>
+                            <input type="text" id="author" placeholder="เช่น ผู้มาเยือนกรกฎ หรือ ชื่อราศีของคุณ" class="w-full bg-slate-950 border border-slate-800 focus:border-amber-400 focus:outline-none rounded-xl px-4 py-3 text-sm text-slate-100 transition duration-150" required>
+                        </div>
+                        <div>
+                            <label for="memory-text" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">ความทรงจำที่คุณไม่มีวันลืม</label>
+                            <textarea id="memory-text" rows="3" placeholder="ระบุความสุข ความรัก หรือของชิ้นพิเศษในวัยเด็ก ที่คุณอยากเก็บไว้อย่างเหนียวแน่นชั่วนิรันดร์..." class="w-full bg-slate-950 border border-slate-800 focus:border-amber-400 focus:outline-none rounded-xl px-4 py-3 text-sm text-slate-100 transition duration-150 resize-none" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-6 py-3 rounded-xl transition duration-150 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>จารึกเก็บไว้ในกำแพงหินความทรงจำ</span>
+                        </button>
+                    </form>
+                    <div>
+                        <h4 class="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-3">จดหมายเหตุล่าสุดในคลัง</h4>
+                        <div class="space-y-3 max-h-56 overflow-y-auto pr-2" id="memories-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="compatibility" class="py-20 px-4 bg-slate-900/10 border-b border-slate-900">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 border border-rose-400/20 text-xs font-medium mb-3">
+                        <i data-lucide="heart" class="w-3.5 h-3.5"></i>
+                        <span>Loyal & Caring: มั่นคงและดูแลเอาใจใส่เป็นเลิศ</span>
+                    </div>
+                    <h2 class="font-title text-3xl sm:text-4xl font-bold text-sky-200 mb-4">สายสัมพันธ์ลูนาเรีย: เคมีราศีที่เข้ากันได้</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto">
+                        หากท่านรักชาวกรกฎแล้ว จะได้รับการดูแลและเอาใจใส่อย่างดีเลิศและภักดีที่สุด แต่ว่าท่านเข้ากันได้ดีกับชาวเมืองลูนาเรียระดับใด? ทดลองตรวจเช็กคู่ราศีได้ด้านล่างนี้
+                    </p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-slate-900/60 border border-slate-800/80 rounded-3xl p-6 sm:p-8">
+                    <div class="flex flex-col md:flex-row items-center gap-6 justify-between mb-8">
+                        <div class="flex items-center gap-3 bg-slate-950 border border-slate-800 p-4 rounded-2xl w-full md:w-auto">
+                            <div class="w-12 h-12 rounded-xl bg-sky-950 flex items-center justify-center text-sky-400 text-xl font-bold">♋</div>
+                            <div>
+                                <h4 class="font-title text-sm text-slate-100 font-bold">ราศีกรกฎ (เจ้าเมือง)</h4>
+                                <span class="text-xs text-sky-400">ธาตุน้ำ ปกครองโดยดวงจันทร์</span>
+                            </div>
+                        </div>
+                        <div class="text-rose-400 flex flex-col items-center">
+                            <i data-lucide="heart" class="w-8 h-8 animate-pulse text-rose-500"></i>
+                            <span class="text-xs text-slate-500 mt-1">แรงดึงดูด</span>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <label for="zodiac-select" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">เลือกราศีที่ต้องการเทียบเคียง</label>
+                            <select id="zodiac-select" onchange="checkZodiacCompatibility()" class="w-full bg-slate-950 border border-slate-800 focus:border-rose-400 focus:outline-none rounded-xl px-4 py-3 text-sm text-slate-100 transition duration-150">
+                                <option value="scorpio">ราศีพิจิก (ธาตุน้ำ)</option>
+                                <option value="pisces">ราศีมีน (ธาตุน้ำ)</option>
+                                <option value="taurus">ราศีพฤษภ (ธาตุดิน)</option>
+                                <option value="aries">ราศีเมษ (ธาตุไฟ)</option>
+                                <option value="leo">ราศีสิงห์ (ธาตุไฟ)</option>
+                                <option value="aquarius">ราศีกุมภ์ (ธาตุลม)</option>
+                                <option value="gemini">ราศีเมถุน (ธาตุลม)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="compatibility-result" class="bg-slate-950 border border-slate-800/80 rounded-2xl p-6 transition-all duration-300"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="font-title text-3xl sm:text-4xl font-bold text-sky-200 mb-4">จุดสมดุลแห่งดวงวิญญาณปู</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    ความเข้าใจในธรรมชาติทั้งแง่ดีและแง่ที่ควรระวังของชาวเมืองลูนาเรีย เพื่อรักษาสมดุลชีวิตที่เปี่ยมด้วยความสุข
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-emerald-950/20 border border-emerald-500/20 rounded-3xl p-6 sm:p-8 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                            <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-title text-xl font-bold text-emerald-300">จุดแข็งอันสว่างไสวของเมือง</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-400 font-bold">•</span>
+                            <span><strong>ความเห็นอกเห็นใจผู้อื่น (Empathy):</strong> เข้าอกเข้าใจจิตใจผู้อื่นอย่างถ่องแท้เป็นเลิศ ปลอบประโลมเยียวยาเก่งที่สุด</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-400 font-bold">•</span>
+                            <span><strong>จินตนาการกว้างไกล (High Imagination):</strong> ความสามารถทางศิลปะ และการคาดเดาความรู้สึกได้อย่างแม่นยำ</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-400 font-bold">•</span>
+                            <span><strong>ความรับผิดชอบอย่างเปี่ยมล้น:</strong> เมื่อเป็นสิ่งที่ชาวลูนาเรียห่วงใย พวกเขาจะดูแลอย่างสุดกำลังประหนึ่งปกป้องชีวิตตนเอง</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-rose-950/20 border border-rose-500/20 rounded-3xl p-6 sm:p-8 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400">
+                            <i data-lucide="minus-circle" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-title text-xl font-bold text-rose-300">จุดอ่อนและสิ่งที่ควรระวัง</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <span class="text-rose-400 font-bold">•</span>
+                            <span><strong>ขี้ใจน้อยแปรปรวนง่าย (Moodiness):</strong> อิทธิพลจากดวงจันทร์ทำให้เกิดความขี้น้อยใจ สะเทือนใจง่ายในสิ่งเล็กน้อย</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-rose-400 font-bold">•</span>
+                            <span><strong>ความขี้หึงหวงและหวงแหน (Possessiveness):</strong> เนื่องจากรักใครแล้วจะทุ่มเทจนสุดหัวใจ ทำให้กลัวการสูญเสียหรือละเลย</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-rose-400 font-bold">•</span>
+                            <span><strong>การเก็บตัวปิดเกราะป้องกัน (Withdrawn):</strong> บางครั้งเมื่อเริ่มรู้สึกไม่ปลอดภัยจะพับกระดองหนีหายเข้าถ้ำปิดประตูชีวิตทันที</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-900 py-12 px-4 relative z-10 text-center">
+        <div class="max-w-7xl mx-auto space-y-6">
+            <div class="flex items-center justify-center gap-2">
+                <i data-lucide="moon-star" class="w-6 h-6 text-sky-400"></i>
+                <span class="font-title font-semibold tracking-wider text-slate-100 text-lg">LUNARIA</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
+                "ในความแข็งแกร่งภายนอก ย่อมโอบอุ้มความอ่อนโยนลึกซึ้งภายใน" <br>
+                สัจจะพจน์แห่งมหานครลูนาเรีย ยินดีต้อนรับผู้แสวงหาอารมณ์อันอ่อนไหวทุกจิตวิญญาณ
+            </p>
+            <div class="text-xs text-slate-600">
+                &copy; 2026 Lunaria - มหานครแห่งกรกฎ. ข้อมูลอ้างอิงและพฤติกรรมศาสตร์อ้างตามการขับเคลื่อนแห่งจักรราศีธาตุน้ำ
+            </div>
+        </div>
+    </footer>
+
+    <div id="custom-alert" class="fixed bottom-6 right-6 z-50 bg-slate-900 border border-emerald-500/50 text-slate-100 px-5 py-4 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 max-w-xs sm:max-w-sm flex items-start gap-3">
+        <div class="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+        </div>
+        <div>
+            <h5 class="font-title font-medium text-emerald-400 text-sm">สำเร็จ!</h5>
+            <p id="alert-message" class="text-xs text-slate-300 mt-1">ความทรงจำของคุณถูกประทับไว้บนผืนดินลูนาเรียเรียบร้อยแล้ว</p>
+        </div>
+    </div>
+
+    <script src="assets/load-components.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

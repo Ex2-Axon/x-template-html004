@@ -1,0 +1,48 @@
+﻿body {
+    font-family: 'Sarabun', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #020617;
+}
+
+.font-title {
+    font-family: 'Mitr', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 9999px;
+}
+
+#starfield {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -10;
+}
+
+#starfield .star {
+    position: absolute;
+    border-radius: 9999px;
+    background: rgba(148, 163, 184, 0.75);
+    animation: twinkle 4s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-3px); }
+}
+
+.water-wave {
+    transform: translateZ(0);
+}
